@@ -37,6 +37,13 @@ class Command(BaseCommand):
         "sin eliminar usuarios, empleados, departamentos ni roles."
     )
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "--confirmar",
+            action="store_true",
+            help="No pide confirmación (para una base local recién creada).",
+        )
+
     @transaction.atomic
     def handle(self, *args, **options):
 
@@ -47,7 +54,7 @@ class Command(BaseCommand):
             )
         )
 
-        confirmacion = input(
+        confirmacion = "RECONSTRUIR" if options["confirmar"] else input(
             "Escribí 'RECONSTRUIR' para continuar: "
         )
 

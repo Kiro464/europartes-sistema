@@ -1,3 +1,5 @@
+import os
+
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import Group
 from django.db import transaction
@@ -141,12 +143,30 @@ DEPARTAMENTOS = {
 }
 
 
+# Contraseña de los usuarios de demostración en un entorno local.
+# Documentada en docs/usuarios-de-prueba.md. No usarla en producción.
+PASSWORD_DEMO = "Demo.Europartes2026"
+
+
 class Command(BaseCommand):
     help = "Crea la estructura organizacional y los usuarios iniciales de EuropartesSystem."
 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "--password",
+            default=os.environ.get("EUROPARTES_DEMO_PASSWORD", PASSWORD_DEMO),
+            help="Contraseña de los usuarios nuevos (por defecto, la de demostración).",
+        )
+        parser.add_argument(
+            "--restablecer-contrasenas",
+            action="store_true",
+            help="También cambia la contraseña de los usuarios que ya existen.",
+        )
+
     @transaction.atomic
     def handle(self, *args, **options):
-        password_inicial = "Europartes123"
+        password_inicial = options["password"]
+        restablecer = options["restablecer_contrasenas"]
 
         self.stdout.write("Procesando departamentos...")
 
@@ -209,8 +229,9 @@ class Command(BaseCommand):
                 user.is_staff = False
                 user.is_superuser = False
 
-                # Contraseña inicial para entorno de desarrollo.
-                user.set_password(password_inicial)
+                # Solo se cambia la contraseña si se pide explícitamente.
+                if restablecer:
+                    user.set_password(password_inicial)
                 user.save()
                 
                 # El usuario ya existe y puede ser reutilizado.

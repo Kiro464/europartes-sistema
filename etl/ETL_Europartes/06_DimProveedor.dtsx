@@ -1,0 +1,2387 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/11/2026 10:09:14 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALEJANDRO"
+  DTS:CreatorName="ALEJANDRO\Alejandro"
+  DTS:DTSID="{DBBF79D5-5C03-4ED8-944D-08C9AC80D19F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="19466"
+  DTS:ObjectName="06_DimProveedor"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{81874704-A4F5-49FA-8E16-F528B48C0171}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{F3D10E65-7D02-4D04-B40B-C65331C6BA50}"
+      DTS:ObjectName="pEjecucionKey"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A5CDC12E-89CB-4AC8-8996-EB99263A0A57}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="EjecucionKey">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7BCD1990-E41D-400F-8C34-09D1BE85FEF1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="FechaCargaETL">
+      <DTS:VariableValue
+        DTS:DataType="7">12/30/2019</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{23024A1E-02E2-4B8C-995C-1A6EB74655B9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosActualizados">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{94768076-B9C7-4F75-803F-974279DA67EC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosExtraidos">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4849CB9B-4AEC-404C-B248-DAAAB254B0F2}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosInsertados">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2570B671-21C4-4281-8BDC-1D7C4FE7A0EE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosRechazados">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{85B864D7-B836-4E93-A073-1C4545BD586A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosSinCambio">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Cargar stg_Proveedor"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8BE7DE31-CDCA-4C77-B766-975C58DC49D8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Cargar stg_Proveedor"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DRV - Datos Staging"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Output].Columns[FechaCarga]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Output].Columns[FechaCarga]"
+                      name="FechaCarga"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::FechaCargaETL]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::FechaCargaETL]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Output].Columns[EjecucionKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Output].Columns[EjecucionKey]"
+                      name="EjecucionKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::EjecucionKey]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::EjecucionKey]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - stg_Proveedor"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[Proveedor]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Connections[OleDbConnection]"
+                  connectionManagerID="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_DW_AutoPartes]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].Columns[Telefono]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Telefono"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Telefono]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].Columns[SitioWeb]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SitioWeb"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[SitioWeb]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[SitioWeb]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].Columns[Estado]"
+                      cachedDataType="bool"
+                      cachedName="Estado"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[Estado]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Estado]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].Columns[PaisKey]"
+                      cachedDataType="i4"
+                      cachedName="PaisKey"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[PaisKey]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Match Output].Columns[PaisKey]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].Columns[FechaCarga]"
+                      cachedDataType="date"
+                      cachedName="FechaCarga"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[FechaCarga]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Output].Columns[FechaCarga]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].Columns[EjecucionKey]"
+                      cachedDataType="i8"
+                      cachedName="EjecucionKey"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[EjecucionKey]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Output].Columns[EjecucionKey]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].Columns[Id]"
+                      cachedDataType="i4"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorID]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[StgProveedorKey]"
+                      dataType="i8"
+                      name="StgProveedorKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[ProveedorID]"
+                      dataType="i4"
+                      name="ProveedorID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="150"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[PaisKey]"
+                      dataType="i4"
+                      name="PaisKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[Telefono]"
+                      dataType="wstr"
+                      length="30"
+                      name="Telefono" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="150"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[SitioWeb]"
+                      dataType="wstr"
+                      length="255"
+                      name="SitioWeb" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[Estado]"
+                      dataType="bool"
+                      name="Estado" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[FechaCarga]"
+                      dataType="dbTimeStamp2"
+                      name="FechaCarga" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input].ExternalColumns[EjecucionKey]"
+                      dataType="i8"
+                      name="EjecucionKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP - DimPais"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT PaisID, PaisKey FROM dbo.DimPais;</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT PaisID, PaisKey FROM dbo.DimPais;) [refTable]
+where [refTable].[PaisID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="PaisID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PaisKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - Cargar stg_Proveedor\133:invalid};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Connections[OleDbConnection]"
+                  connectionManagerID="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_DW_AutoPartes]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Inputs[Lookup Input].Columns[PaisId]"
+                      cachedDataType="i4"
+                      cachedName="PaisId"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[PaisId]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">PaisID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Match Output].Columns[PaisKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Match Output].Columns[PaisKey]"
+                      name="PaisKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">PaisKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar stg_Proveedor\RC - Extraidos"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="RC - Extraidos">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RegistrosExtraidos</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar stg_Proveedor\RC - Extraidos.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar stg_Proveedor\RC - Extraidos.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT - Cargar stg_Proveedor\RC - Extraidos.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Proveedor OLTP"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    Id,
+    CAST(Nombre   AS NVARCHAR(150)) AS Nombre,
+    PaisId,
+    CAST(Telefono AS NVARCHAR(30))  AS Telefono,
+    CAST(Email    AS NVARCHAR(150)) AS Email,
+    CAST(SitioWeb AS NVARCHAR(255)) AS SitioWeb,
+    Estado
+FROM dbo.Proveedor;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Connections[OleDbConnection]"
+                  connectionManagerID="{FF7725E5-F258-4FCA-AE72-F5B3BB2E2468}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLTP_AutoPartes]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      length="150"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[PaisId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[PaisId]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[PaisId]"
+                      name="PaisId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Telefono]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                      length="30"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Telefono]"
+                      name="Telefono"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="150"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[SitioWeb]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[SitioWeb]"
+                      length="255"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[SitioWeb]"
+                      name="SitioWeb"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Estado]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Estado]"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].Columns[Estado]"
+                      name="Estado"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                      dataType="i4"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="150"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[PaisId]"
+                      dataType="i4"
+                      name="PaisId" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                      dataType="wstr"
+                      length="30"
+                      name="Telefono" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="150"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[SitioWeb]"
+                      dataType="wstr"
+                      length="255"
+                      name="SitioWeb" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output].ExternalColumns[Estado]"
+                      dataType="bool"
+                      name="Estado" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Id]"
+                      name="Id" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[PaisId]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[PaisId]"
+                      name="PaisId" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Telefono]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Telefono]"
+                      name="Telefono" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[SitioWeb]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[SitioWeb]"
+                      name="SitioWeb" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Estado]"
+                      dataType="bool"
+                      lineageId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Error Output].Columns[Estado]"
+                      name="Estado" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Cargar stg_Proveedor.Paths[Derived Column Output]"
+              endId="Package\DFT - Cargar stg_Proveedor\RC - Extraidos.Inputs[Row Count Input 1]"
+              name="Derived Column Output"
+              startId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT - Cargar stg_Proveedor.Paths[Lookup Match Output]"
+              endId="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT - Cargar stg_Proveedor.Paths[OLE DB Source Output]"
+              endId="Package\DFT - Cargar stg_Proveedor\LKP - DimPais.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT - Cargar stg_Proveedor.Paths[Row Count Output 1]"
+              endId="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT - Cargar stg_Proveedor\RC - Extraidos.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Comparar SCD2 DimProveedor"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{09E479FB-3A32-4187-89F5-26C0E0384B9A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Comparar SCD2 DimProveedor"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="CS - Cambios SCD2"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Inputs[Conditional Split Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="Nombre"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Inputs[Conditional Split Input].Columns[NombreDW]"
+                      cachedDataType="wstr"
+                      cachedLength="150"
+                      cachedName="NombreDW"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[NombreDW]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Outputs[Cambio]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Cambio"
+                  synchronousInputId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">([ISNULL](#{Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Nombre]}) &amp;&amp; ![ISNULL](#{Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[NombreDW]}))</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">(ISNULL(Nombre) &amp;&amp; !ISNULL(NombreDW))</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Outputs[SinCambio]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="SinCambio"
+                  synchronousInputId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">1 == 1</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">1 == 1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP - DimProveedor Actual"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    ProveedorKey,
+    ProveedorID,
+    Nombre AS NombreDW,
+    PaisKey AS PaisKeyDW,
+    Telefono AS TelefonoDW,
+    Email AS EmailDW,
+    SitioWeb AS SitioWebDW,
+    Estado AS EstadoDW,
+    VigenteDesde,
+    VigenteHasta,
+    EsActual
+FROM dbo.DimProveedor
+WHERE EsActual = 1;</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT
+    ProveedorKey,
+    ProveedorID,
+    Nombre AS NombreDW,
+    PaisKey AS PaisKeyDW,
+    Telefono AS TelefonoDW,
+    Email AS EmailDW,
+    SitioWeb AS SitioWebDW,
+    Estado AS EstadoDW,
+    VigenteDesde,
+    VigenteHasta,
+    EsActual
+FROM dbo.DimProveedor
+WHERE EsActual = 1;) [refTable]
+where [refTable].[ProveedorID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProveedorKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProveedorID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NombreDW" dataType="DT_WSTR" length="150" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PaisKeyDW" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TelefonoDW" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EmailDW" dataType="DT_WSTR" length="150" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SitioWebDW" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EstadoDW" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VigenteDesde" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="VigenteHasta" dataType="DT_DBTIMESTAMP2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EsActual" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[ProveedorID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Connections[OleDbConnection]"
+                  connectionManagerID="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_DW_AutoPartes]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Inputs[Lookup Input].Columns[ProveedorID]"
+                      cachedDataType="i4"
+                      cachedName="ProveedorID"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[ProveedorID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ProveedorID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[ProveedorKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[ProveedorKey]"
+                      name="ProveedorKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ProveedorKey</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[NombreDW]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="150"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[NombreDW]"
+                      name="NombreDW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">NombreDW</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[PaisKeyDW]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[PaisKeyDW]"
+                      name="PaisKeyDW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">PaisKeyDW</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[TelefonoDW]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="30"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[TelefonoDW]"
+                      name="TelefonoDW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">TelefonoDW</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[EmailDW]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="150"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[EmailDW]"
+                      name="EmailDW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">EmailDW</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[SitioWebDW]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[SitioWebDW]"
+                      name="SitioWebDW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SitioWebDW</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[EstadoDW]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[EstadoDW]"
+                      name="EstadoDW"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">EstadoDW</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[VigenteDesde]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[VigenteDesde]"
+                      name="VigenteDesde"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">VigenteDesde</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[VigenteHasta]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[VigenteHasta]"
+                      name="VigenteHasta"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">VigenteHasta</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[EsActual]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output].Columns[EsActual]"
+                      name="EsActual"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">EsActual</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Comparar SCD2 DimProveedor\RC - Cambios SCD2"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="RC - Cambios SCD2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RegistrosActualizados</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\RC - Cambios SCD2.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\RC - Cambios SCD2.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT - Comparar SCD2 DimProveedor\RC - Cambios SCD2.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Comparar SCD2 DimProveedor\RC - Nuevos Proveedores"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="RC - Nuevos Proveedores">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RegistrosInsertados</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\RC - Nuevos Proveedores.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\RC - Nuevos Proveedores.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT - Comparar SCD2 DimProveedor\RC - Nuevos Proveedores.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - stg_Proveedor"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    StgProveedorKey,
+    ProveedorID,
+    Nombre,
+    PaisKey,
+    Telefono,
+    Email,
+    SitioWeb,
+    Estado,
+    FechaCarga,
+    EjecucionKey
+FROM stg.Proveedor
+WHERE EjecucionKey = ?;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"0:Input",{A5CDC12E-89CB-4AC8-8996-EB99263A0A57};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Connections[OleDbConnection]"
+                  connectionManagerID="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_DW_AutoPartes]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[StgProveedorKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[StgProveedorKey]"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[StgProveedorKey]"
+                      name="StgProveedorKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[ProveedorID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[ProveedorID]"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[ProveedorID]"
+                      name="ProveedorID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      length="150"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[PaisKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[PaisKey]"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[PaisKey]"
+                      name="PaisKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Telefono]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                      length="30"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Telefono]"
+                      name="Telefono"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="150"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[SitioWeb]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[SitioWeb]"
+                      length="255"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[SitioWeb]"
+                      name="SitioWeb"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Estado]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[Estado]"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[Estado]"
+                      name="Estado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[FechaCarga]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[FechaCarga]"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[FechaCarga]"
+                      name="FechaCarga"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[EjecucionKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[EjecucionKey]"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].Columns[EjecucionKey]"
+                      name="EjecucionKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[StgProveedorKey]"
+                      dataType="i8"
+                      name="StgProveedorKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[ProveedorID]"
+                      dataType="i4"
+                      name="ProveedorID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="150"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[PaisKey]"
+                      dataType="i4"
+                      name="PaisKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[Telefono]"
+                      dataType="wstr"
+                      length="30"
+                      name="Telefono" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="150"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[SitioWeb]"
+                      dataType="wstr"
+                      length="255"
+                      name="SitioWeb" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[Estado]"
+                      dataType="bool"
+                      name="Estado" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[FechaCarga]"
+                      dataType="dbTimeStamp2"
+                      name="FechaCarga" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output].ExternalColumns[EjecucionKey]"
+                      dataType="i8"
+                      name="EjecucionKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[StgProveedorKey]"
+                      dataType="i8"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[StgProveedorKey]"
+                      name="StgProveedorKey" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[ProveedorID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[ProveedorID]"
+                      name="ProveedorID" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[Nombre]"
+                      name="Nombre" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[PaisKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[PaisKey]"
+                      name="PaisKey" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[Telefono]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[Telefono]"
+                      name="Telefono" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      dataType="wstr"
+                      length="150"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[SitioWeb]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[SitioWeb]"
+                      name="SitioWeb" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[Estado]"
+                      dataType="bool"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[Estado]"
+                      name="Estado" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[FechaCarga]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[FechaCarga]"
+                      name="FechaCarga" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[EjecucionKey]"
+                      dataType="i8"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[EjecucionKey]"
+                      name="EjecucionKey" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Comparar SCD2 DimProveedor.Paths[Cambio]"
+              endId="Package\DFT - Comparar SCD2 DimProveedor\RC - Cambios SCD2.Inputs[Row Count Input 1]"
+              name="Cambio"
+              startId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Outputs[Cambio]" />
+            <path
+              refId="Package\DFT - Comparar SCD2 DimProveedor.Paths[Lookup Match Output]"
+              endId="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT - Comparar SCD2 DimProveedor.Paths[Lookup No Match Output]"
+              endId="Package\DFT - Comparar SCD2 DimProveedor\RC - Nuevos Proveedores.Inputs[Row Count Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT - Comparar SCD2 DimProveedor.Paths[OLE DB Source Output]"
+              endId="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Actualizar Control DimProveedor"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{1120A2EC-13C4-4851-8149-B6355300E148}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Actualizar Control DimProveedor"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+          SQLTask:SqlStatementSource="UPDATE dbo.ETL_ControlCarga&#xA;SET&#xA;    UltimaFechaCarga = SYSDATETIME(),&#xA;    UltimoIDCarga = (SELECT MAX(ProveedorID) FROM dbo.DimProveedor),&#xA;    UltimaEjecucionKey = ?,&#xA;    FechaActualizacion = SYSDATETIME()&#xA;WHERE Entidad = 'DimProveedor';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::EjecucionKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Clasificar y Aplicar SCD2"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{671DEFF2-B4EA-4752-900D-25B5983A5853}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Clasificar y Aplicar SCD2"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+          SQLTask:SqlStatementSource="SET XACT_ABORT ON;&#xA;BEGIN TRY&#xA;&#xA;    BEGIN TRANSACTION;&#xA;&#xA;    DECLARE @EjecucionKey BIGINT = ?;&#xA;    DECLARE @FechaCarga DATETIME2(0);&#xA;&#xA;    SELECT&#xA;        @FechaCarga = CAST(FechaInicio AS DATETIME2(0))&#xA;    FROM dbo.ETL_Ejecucion&#xA;    WHERE EjecucionKey = @EjecucionKey;&#xA;&#xA;    /* --- PROTECCIÓN 1: Validar existencia de la ejecución --- */&#xA;    IF @FechaCarga IS NULL&#xA;        THROW 50001, 'No se encontro la ejecucion ETL indicada.', 1;&#xA;&#xA;    /* --- PROTECCIÓN 2: Validar datos en Staging --- */&#xA;    IF NOT EXISTS (&#xA;        SELECT 1&#xA;        FROM stg.Proveedor&#xA;        WHERE EjecucionKey = @EjecucionKey&#xA;    )&#xA;        THROW 50002, 'No existen registros en staging para la ejecucion ETL.', 1;&#xA;&#xA;    /* ============================================================&#xA;       1. CLASIFICAR REGISTROS&#xA;       ============================================================ */&#xA;    IF OBJECT_ID('tempdb..#ClasificacionProveedor') IS NOT NULL&#xA;        DROP TABLE #ClasificacionProveedor;&#xA;&#xA;    SELECT&#xA;        s.StgProveedorKey,&#xA;        s.ProveedorID,&#xA;        s.Nombre,&#xA;        s.PaisKey,&#xA;        s.Telefono,&#xA;        s.Email,&#xA;        s.SitioWeb,&#xA;        s.Estado,&#xA;        s.FechaCarga,&#xA;        CASE&#xA;            WHEN d.ProveedorKey IS NULL&#xA;                THEN 'NUEVO'&#xA;&#xA;            WHEN&#xA;                d.Nombre &lt;&gt; s.Nombre&#xA;                OR (d.Nombre IS NULL AND s.Nombre IS NOT NULL)&#xA;                OR (d.Nombre IS NOT NULL AND s.Nombre IS NULL)&#xA;&#xA;                OR d.PaisKey &lt;&gt; s.PaisKey&#xA;                OR (d.PaisKey IS NULL AND s.PaisKey IS NOT NULL)&#xA;                OR (d.PaisKey IS NOT NULL AND s.PaisKey IS NULL)&#xA;&#xA;                OR d.Telefono &lt;&gt; s.Telefono&#xA;                OR (d.Telefono IS NULL AND s.Telefono IS NOT NULL)&#xA;                OR (d.Telefono IS NOT NULL AND s.Telefono IS NULL)&#xA;&#xA;                OR d.Email &lt;&gt; s.Email&#xA;                OR (d.Email IS NULL AND s.Email IS NOT NULL)&#xA;                OR (d.Email IS NOT NULL AND s.Email IS NULL)&#xA;&#xA;                OR d.SitioWeb &lt;&gt; s.SitioWeb&#xA;                OR (d.SitioWeb IS NULL AND s.SitioWeb IS NOT NULL)&#xA;                OR (d.SitioWeb IS NOT NULL AND s.SitioWeb IS NULL)&#xA;&#xA;                OR d.Estado &lt;&gt; s.Estado&#xA;                THEN 'CAMBIO'&#xA;&#xA;            ELSE 'SIN_CAMBIO'&#xA;        END AS TipoOperacion&#xA;    INTO #ClasificacionProveedor&#xA;    FROM stg.Proveedor s&#xA;    LEFT JOIN dbo.DimProveedor d&#xA;        ON d.ProveedorID = s.ProveedorID&#xA;        AND d.EsActual = 1&#xA;    WHERE&#xA;        s.EjecucionKey = @EjecucionKey;&#xA;&#xA;    /* ============================================================&#xA;       2. CERRAR VERSIONES ACTUALES MODIFICADAS&#xA;       ============================================================ */&#xA;    UPDATE d&#xA;    SET&#xA;        d.EsActual = 0,&#xA;        d.VigenteHasta = c.FechaCarga&#xA;    FROM dbo.DimProveedor d&#xA;    INNER JOIN #ClasificacionProveedor c&#xA;        ON c.ProveedorID = d.ProveedorID&#xA;    WHERE&#xA;        c.TipoOperacion = 'CAMBIO'&#xA;        AND d.EsActual = 1;&#xA;&#xA;    /* ============================================================&#xA;       3. INSERTAR NUEVOS Y NUEVAS VERSIONES SCD2&#xA;       ============================================================ */&#xA;    INSERT INTO dbo.DimProveedor&#xA;    (&#xA;        ProveedorID,&#xA;        Nombre,&#xA;        PaisKey,&#xA;        Telefono,&#xA;        Email,&#xA;        SitioWeb,&#xA;        Estado,&#xA;        VigenteDesde,&#xA;        VigenteHasta,&#xA;        EsActual&#xA;    )&#xA;    SELECT&#xA;        ProveedorID,&#xA;        Nombre,&#xA;        PaisKey,&#xA;        Telefono,&#xA;        Email,&#xA;        SitioWeb,&#xA;        Estado,&#xA;        FechaCarga,&#xA;        NULL,&#xA;        1&#xA;    FROM #ClasificacionProveedor&#xA;    WHERE TipoOperacion IN ('NUEVO', 'CAMBIO');&#xA;&#xA;    /* ============================================================&#xA;       4. COMMIT&#xA;       ============================================================ */&#xA;    COMMIT TRANSACTION;&#xA;&#xA;    /* ============================================================&#xA;       5. DEVOLVER CONTADORES A SSIS&#xA;       ============================================================ */&#xA;    SELECT&#xA;        CAST(SUM(CASE WHEN TipoOperacion IN ('NUEVO') THEN 1 ELSE 0 END) AS INT)&#xA;            AS RegistrosInsertados,&#xA;        CAST(SUM(CASE WHEN TipoOperacion = 'CAMBIO' THEN 1 ELSE 0 END) AS INT)&#xA;            AS RegistrosActualizados,&#xA;        CAST(SUM(CASE WHEN TipoOperacion = 'SIN_CAMBIO' THEN 1 ELSE 0 END) AS INT)&#xA;            AS RegistrosSinCambio&#xA;    FROM #ClasificacionProveedor;&#xA;&#xA;END TRY&#xA;BEGIN CATCH&#xA;    IF @@TRANCOUNT &gt; 0&#xA;        ROLLBACK TRANSACTION;&#xA;    THROW;&#xA;END CATCH;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="RegistrosInsertados"
+            SQLTask:DtsVariableName="User::RegistrosInsertados" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="RegistrosActualizados"
+            SQLTask:DtsVariableName="User::RegistrosActualizados" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="RegistrosSinCambio"
+            SQLTask:DtsVariableName="User::RegistrosSinCambio" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::EjecucionKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Limpiar Staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{2C294EE9-E236-48C3-9E14-025472E2AFB1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Limpiar Staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+          SQLTask:SqlStatementSource="DELETE FROM stg.Proveedor;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Obtener Contexto Ejecucion"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{D76040F0-8F2B-4B5E-8EA4-06D7C10D10A6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Obtener Contexto Ejecucion"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+          SQLTask:SqlStatementSource="SELECT&#xA;    EjecucionKey,&#xA;    FechaInicio&#xA;FROM dbo.ETL_Ejecucion&#xA;WHERE EjecucionKey = ?;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="EjecucionKey"
+            SQLTask:DtsVariableName="User::EjecucionKey" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="FechaInicio"
+            SQLTask:DtsVariableName="User::FechaCargaETL" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::pEjecucionKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Registrar Resultado DimProveedor"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{E5D6D662-B87E-4258-AFF4-DD26CD626BBA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Registrar Resultado DimProveedor"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+          SQLTask:SqlStatementSource="UPDATE dbo.ETL_Ejecucion&#xA;SET&#xA;    RegistrosExtraidos = RegistrosExtraidos + ?,&#xA;    RegistrosInsertados = RegistrosInsertados + ?,&#xA;    RegistrosActualizados = RegistrosActualizados + ?,&#xA;    RegistrosRechazados = RegistrosRechazados + ?,&#xA;    Mensaje = COALESCE(Mensaje, '') + ' | DimProveedor procesada correctamente'&#xA;WHERE EjecucionKey = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::RegistrosExtraidos"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::RegistrosInsertados"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::RegistrosActualizados"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::RegistrosRechazados"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="User::EjecucionKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{3475F258-5294-485C-99B7-8795F72B26F0}"
+      DTS:From="Package\SQL - Obtener Contexto Ejecucion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\DFT - Cargar stg_Proveedor" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{AE93DD10-C1F6-48A3-A387-D621DFC3A561}"
+      DTS:From="Package\DFT - Cargar stg_Proveedor"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\SQL - Clasificar y Aplicar SCD2" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{506ABCA6-31D1-437A-9C46-D656EBB4CF92}"
+      DTS:From="Package\SQL - Clasificar y Aplicar SCD2"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\SQL - Registrar Resultado DimProveedor" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{CC0834E2-F44C-4B62-A6C4-34B32B43EF0E}"
+      DTS:From="Package\SQL - Registrar Resultado DimProveedor"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\SQL - Actualizar Control DimProveedor" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{BC6E6009-B52B-43EC-A554-E68B96012E90}"
+      DTS:From="Package\SQL - Limpiar Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\SQL - Obtener Contexto Ejecucion" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="211,42"
+          Id="Package\DFT - Cargar stg_Proveedor"
+          TopLeft="335,163" />
+        <NodeLayout
+          Size="253,42"
+          Id="Package\DFT - Comparar SCD2 DimProveedor"
+          TopLeft="558.5,162.5" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\SQL - Actualizar Control DimProveedor"
+          TopLeft="316,426" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\SQL - Clasificar y Aplicar SCD2"
+          TopLeft="330,248" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\SQL - Limpiar Staging"
+          TopLeft="343,7" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\SQL - Obtener Contexto Ejecucion"
+          TopLeft="320,85" />
+        <NodeLayout
+          Size="270,42"
+          Id="Package\SQL - Registrar Resultado DimProveedor"
+          TopLeft="308,336" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="440.25,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="440.75,205">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="442,290">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46"
+              Start="0,0"
+              End="0,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="444.75,378">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="436.75,49">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - Cargar stg_Proveedor">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP"
+          TopLeft="347,109" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\DFT - Cargar stg_Proveedor\LKP - DimPais"
+          TopLeft="361,179" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar stg_Proveedor.Paths[OLE DB Source Output]"
+          TopLeft="436,151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="175,42"
+          Id="Package\DFT - Cargar stg_Proveedor\DRV - Datos Staging"
+          TopLeft="181,282" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar stg_Proveedor.Paths[Lookup Match Output]"
+          TopLeft="433,221">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-164.5,61"
+              Start="0,0"
+              End="-164.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="-4,30.5" />
+                  <mssgle:LineSegment
+                    End="-160.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-160.5,30.5"
+                    Point2="-164.5,30.5"
+                    Point3="-164.5,34.5" />
+                  <mssgle:LineSegment
+                    End="-164.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-130.44138671875,35.5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146,42"
+          Id="Package\DFT - Cargar stg_Proveedor\RC - Extraidos"
+          TopLeft="197,366" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar stg_Proveedor.Paths[Derived Column Output]"
+          TopLeft="269.25,324">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor"
+          TopLeft="183,450" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar stg_Proveedor.Paths[Row Count Output 1]"
+          TopLeft="270.75,408">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Cargar stg_Proveedor\SRC - Proveedor OLTP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Cargar stg_Proveedor\LKP - DimPais">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Cargar stg_Proveedor\DST - stg_Proveedor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - Comparar SCD2 DimProveedor">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="176,42"
+          Id="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor"
+          TopLeft="383,85" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual"
+          TopLeft="370,161" />
+        <EdgeLayout
+          Id="Package\DFT - Comparar SCD2 DimProveedor.Paths[OLE DB Source Output]"
+          TopLeft="471.75,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="198,42"
+          Id="Package\DFT - Comparar SCD2 DimProveedor\RC - Nuevos Proveedores"
+          TopLeft="171,249" />
+        <EdgeLayout
+          Id="Package\DFT - Comparar SCD2 DimProveedor.Paths[Lookup No Match Output]"
+          TopLeft="472.5,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-202.5,46"
+              Start="0,0"
+              End="-202.5,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="-4,23" />
+                  <mssgle:LineSegment
+                    End="-198.5,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-198.5,23"
+                    Point2="-202.5,23"
+                    Point3="-202.5,27" />
+                  <mssgle:LineSegment
+                    End="-202.5,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-157.05638671875,28,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\DFT - Comparar SCD2 DimProveedor\CS - Cambios SCD2"
+          TopLeft="576,249" />
+        <EdgeLayout
+          Id="Package\DFT - Comparar SCD2 DimProveedor.Paths[Lookup Match Output]"
+          TopLeft="505.333333333333,203">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="155.666666666667,46"
+              Start="0,0"
+              End="155.666666666667,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.6137463697967" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.6137463697967"
+                    Point2="0,18.6137463697967"
+                    Point3="4,18.6137463697967" />
+                  <mssgle:LineSegment
+                    End="151.666666666667,18.6137463697967" />
+                  <mssgle:CubicBezierSegment
+                    Point1="151.666666666667,18.6137463697967"
+                    Point2="155.666666666667,18.6137463697967"
+                    Point3="155.666666666667,22.6137463697967" />
+                  <mssgle:LineSegment
+                    End="155.666666666667,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="29.6419466145833,23.6137463697967,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\DFT - Comparar SCD2 DimProveedor\RC - Cambios SCD2"
+          TopLeft="577,326" />
+        <EdgeLayout
+          Id="Package\DFT - Comparar SCD2 DimProveedor.Paths[Cambio]"
+          TopLeft="661.75,291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35"
+              Start="0,0"
+              End="0,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.15455078125,8.87548828125,34.3091015625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Comparar SCD2 DimProveedor\LKP - DimProveedor Actual">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Comparar SCD2 DimProveedor\SRC - stg_Proveedor">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

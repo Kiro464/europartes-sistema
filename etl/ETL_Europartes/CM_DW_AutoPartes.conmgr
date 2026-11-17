@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CM_DW_AutoPartes"
+  DTS:DTSID="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="InitialCatalog">@[$Project::pBaseDatosDW]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="Password">@[$Project::pContrasenaSQL]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="ServerName">@[$Project::pServidorSQL]</DTS:PropertyExpression>
+  <DTS:PropertyExpression
+    DTS:Name="UserName">@[$Project::pUsuarioSQL]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=localhost;User ID=etl_europartes;Initial Catalog=DWAutoPartes;Provider=MSOLEDBSQL.1;Persist Security Info=True;Connect Timeout=30;Auto Translate=False;Application Name=SSIS-00_Master_ETL-{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}LocalHost.DWAutoPartes;Use Encryption for Data=True;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

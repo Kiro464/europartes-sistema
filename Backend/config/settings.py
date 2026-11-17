@@ -186,6 +186,42 @@ if os.environ.get("WEBSITE_INSTANCE_ID"):
         DATABASES[alias].pop("USER", None)
         DATABASES[alias].pop("PASSWORD", None)
 
+else:
+    # ========================================================
+    # ENTORNO LOCAL
+    # ========================================================
+    # Por defecto: SQL Server local con autenticación de Windows.
+    # Con DB_USER y DB_PASSWORD se usa autenticación SQL (por ejemplo,
+    # SQL Server en Docker o en otro equipo).
+    LOCAL_SQL_HOST = os.getenv("DB_HOST", ".")
+    LOCAL_SQL_PORT = os.getenv("DB_PORT", "")
+    LOCAL_SQL_DRIVER = os.getenv("DB_DRIVER", "ODBC Driver 17 for SQL Server")
+    LOCAL_SQL_USER = os.getenv("DB_USER", "")
+    LOCAL_SQL_PASSWORD = os.getenv("DB_PASSWORD", "")
+
+    LOCAL_DATABASES = {
+        "default": os.getenv("DB_NAME", "AutoPartes"),
+        "dw": os.getenv("DW_DB_NAME", "DWAutoPartes"),
+        "ssis": os.getenv("SSIS_DB_NAME", "SSISDB"),
+    }
+
+    for alias, database_name in LOCAL_DATABASES.items():
+        opciones = {
+            "driver": LOCAL_SQL_DRIVER,
+            "extra_params": "TrustServerCertificate=yes",
+        }
+        DATABASES[alias].update({
+            "NAME": database_name,
+            "HOST": LOCAL_SQL_HOST,
+            "PORT": LOCAL_SQL_PORT,
+        })
+        if LOCAL_SQL_USER:
+            DATABASES[alias]["USER"] = LOCAL_SQL_USER
+            DATABASES[alias]["PASSWORD"] = LOCAL_SQL_PASSWORD
+        else:
+            opciones["trusted_connection"] = "yes"
+        DATABASES[alias]["OPTIONS"] = opciones
+
 # ============================================================
 # AZURE SYNAPSE ANALYTICS (SQL Serverless) - OPCIONAL
 # ============================================================

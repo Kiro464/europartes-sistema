@@ -6,10 +6,11 @@ Sistema de gestión para una distribuidora de autopartes: ventas, compras, inven
 
 | Carpeta | Contenido | Tecnología |
 |---|---|---|
-| `Backend/` | API REST, reglas de negocio, ETL y reportes del Data Warehouse | Python 3.13, Django 6.1, Django REST Framework, JWT |
+| `Backend/` | API REST, reglas de negocio, reportes y scripts SQL del Data Warehouse (`Backend/sql/dw`) | Python 3.13, Django 6.1, Django REST Framework, JWT |
 | `Frontend/` | Aplicación web de una sola página | HTML, CSS y JavaScript con módulos ES |
 | `Android/` | App móvil con funcionamiento sin conexión | Kotlin, Jetpack Compose, Room (Android 8.0+) |
-| `docs/` | Documentación técnica de la paridad web-móvil | Markdown |
+| `etl/` | Proyecto SSIS que carga el Data Warehouse (dimensiones y hechos) | SQL Server Integration Services |
+| `docs/` | Instalación local, usuarios de prueba y paridad web-móvil | Markdown |
 
 ## Arquitectura
 
@@ -35,46 +36,50 @@ Azure Data Factory + SSIS ─► carga DWAutoPartes ─► Power BI
 - **Reportes** de ventas, compras y kardex con exportación a Excel.
 - **App Android sin conexión:** los cambios se guardan en el dispositivo y se sincronizan al recuperar la red.
 
-## Puesta en marcha
+## Inicio rápido (local)
 
-### Backend
-
-Requisitos: Python 3.13, SQL Server y ODBC Driver 17 for SQL Server.
+Requisitos: Windows, Python 3.13, SQL Server con ODBC Driver 17 y `sqlcmd`. La guía completa, con el Data Warehouse, la ETL, MongoDB y la app Android, está en **[docs/instalacion-local.md](docs/instalacion-local.md)**.
 
 ```bash
+sqlcmd -S . -E -C -Q "CREATE DATABASE AutoPartes; CREATE DATABASE DWAutoPartes;"
 cd Backend
 python -m venv venv
-venv\Scripts\activate          # En Linux o macOS: source venv/bin/activate
+venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Configura las variables de entorno a partir de `Backend/.env.example` y luego:
+```powershell
+$env:DJANGO_SECRET_KEY = "una-clave-larga-y-aleatoria"
+$env:DJANGO_DEBUG = "True"
+```
 
 ```bash
 python manage.py migrate
+python manage.py crear_roles
+python manage.py reconstruir_datos_desarrollo --confirmar
 python manage.py runserver
 ```
 
-La documentación interactiva de la API queda en `http://localhost:8000/swagger/`.
-
-### Frontend
-
-Es una aplicación estática. Sirve la carpeta `Frontend/` con cualquier servidor web, por ejemplo:
+En otra terminal, sirve la web y abre `http://localhost:5500`:
 
 ```bash
 cd Frontend
 python -m http.server 5500
 ```
 
-La URL de la API se define en `Frontend/js/core/config.js`.
+## Usuarios de prueba
 
-### Android
+`reconstruir_datos_desarrollo` crea 12 usuarios que cubren los 7 roles, todos con la contraseña de demostración `Demo.Europartes2026`. La lista completa está en **[docs/usuarios-de-prueba.md](docs/usuarios-de-prueba.md)**. Por ejemplo:
 
-Abre la carpeta `Android/` en Android Studio y ejecuta la configuración `app`. Por defecto la app usa la API desplegada en Azure; para usar un backend local:
-
-```bash
-./gradlew assembleDebug -Peuropartes.apiBaseUrl=http://10.0.2.2:8000/
-```
+| Usuario | Rol |
+|---|---|
+| `alejandro.jimenez` | Administrador General |
+| `maria.garcia` | Vendedor |
+| `fernando.espinoza` | Coordinador de Logística |
+| `carlos.martinez` | Asesor Financiero |
+| `paola.vargas` | Oficial de Logística |
+| `ricardo.castillo` | Soporte TI |
+| `gabriela.martinez` | Asesor de Marketing |
 
 ## Pruebas
 
@@ -88,9 +93,11 @@ python manage.py test apps.autoevaluacion apps.reportes_dw apps.movimientos.comp
 
 # Android
 cd Android
-./gradlew testDebugUnitTest
+gradlew.bat testDebugUnitTest
 ```
 
 ## Documentación
 
+- [Instalación local](docs/instalacion-local.md)
+- [Usuarios de prueba](docs/usuarios-de-prueba.md)
 - [Paridad entre la web y la app móvil](docs/paridad-web-movil.md)

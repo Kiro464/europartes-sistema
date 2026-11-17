@@ -1,0 +1,2932 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/12/2026 10:35:13 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ALEJANDRO"
+  DTS:CreatorName="ALEJANDRO\Alejandro"
+  DTS:DTSID="{70339B86-F65F-4CF6-BACC-C936307D85B0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="19466"
+  DTS:ObjectName="10_FactVenta"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{4AE71FEC-0A18-455C-98AE-88A0EADAD3A5}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="20"
+      DTS:DTSID="{983A259D-0A3A-4F18-AA14-0A7644068228}"
+      DTS:ObjectName="pEjecucionKey"
+      DTS:Required="True">
+      <DTS:Property
+        DTS:DataType="20"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F768F912-6ED7-442D-93F1-6591912BF574}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="EjecucionKey">
+      <DTS:VariableValue
+        DTS:DataType="20">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{109AF7B3-617A-4E70-AEAE-D5E2A1D53DAA}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="FechaCargaETL">
+      <DTS:VariableValue
+        DTS:DataType="7">9/12/2026 10:37:15 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{B4BCE93E-C288-4A4E-8FFF-F3ADCFA66DF0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosActualizados">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{775A30CB-D190-4C24-B92E-229AA80A86EC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosExtraidos">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2ED739D3-090C-4188-AACF-E8981D7DA821}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosInsertados">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{81FAB970-FF68-43C6-9E80-B5964AEE8C05}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosRechazados">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{41345C34-4195-4B68-A602-6DEF7AC685C5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RegistrosSinCambio">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Cargar FactVenta"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{964D1385-E7AA-4E6F-9037-4E7AFEC79728}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Cargar FactVenta"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="CS - Validar Resolucion Dimensional"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Inputs[Conditional Split Input].Columns[RegistroRechazado]"
+                      cachedDataType="i4"
+                      cachedName="RegistroRechazado"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[RegistroRechazado]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Valido]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Valido"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[RegistroRechazado]} == 0</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">RegistroRechazado == 0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Rechazado]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Rechazado"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[RegistroRechazado]} == 1</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">RegistroRechazado == 1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar FactVenta\DST - FactVenta"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - FactVenta"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FactVenta]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Connections[OleDbConnection]"
+                  connectionManagerID="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_DW_AutoPartes]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[DetalleVentaID]"
+                      cachedDataType="i4"
+                      cachedName="DetalleVentaID"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[DetalleVentaID]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[DetalleVentaID]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[VentaID]"
+                      cachedDataType="i4"
+                      cachedName="VentaID"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[VentaID]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[VentaID]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[FacturaVentaID]"
+                      cachedDataType="i4"
+                      cachedName="FacturaVentaID"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FacturaVentaID]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FacturaVentaID]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[Cantidad]"
+                      cachedDataType="i4"
+                      cachedName="Cantidad"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[PrecioUnitario]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioUnitario"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[PrecioUnitario]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[FechaVentaKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaVentaKey"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaVentaKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaVentaKey]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[FechaRegistroKey]"
+                      cachedDataType="i4"
+                      cachedName="FechaRegistroKey"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaRegistroKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaRegistroKey]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[ProductoKey]"
+                      cachedDataType="i4"
+                      cachedName="ProductoKey"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[ProductoKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ProductoKey]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[ClienteKey]"
+                      cachedDataType="i4"
+                      cachedName="ClienteKey"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[ClienteKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ClienteKey]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[EmpleadoKey]"
+                      cachedDataType="i4"
+                      cachedName="EmpleadoKey"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[EmpleadoKey]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].Columns[Subtotal]"
+                      cachedDataType="numeric"
+                      cachedName="Subtotal"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[Subtotal]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[Subtotal]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[VentaKey]"
+                      dataType="i8"
+                      name="VentaKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[VentaID]"
+                      dataType="i4"
+                      name="VentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FacturaVentaID]"
+                      dataType="i4"
+                      name="FacturaVentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaVentaKey]"
+                      dataType="i4"
+                      name="FechaVentaKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaRegistroKey]"
+                      dataType="i4"
+                      name="FechaRegistroKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[ProductoKey]"
+                      dataType="i4"
+                      name="ProductoKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[ClienteKey]"
+                      dataType="i4"
+                      name="ClienteKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoKey]"
+                      dataType="i4"
+                      name="EmpleadoKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      dataType="numeric"
+                      name="PrecioUnitario"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[Subtotal]"
+                      dataType="numeric"
+                      name="Subtotal"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[IVA]"
+                      dataType="numeric"
+                      name="IVA"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[Total]"
+                      dataType="numeric"
+                      name="Total"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[DetalleVentaID]"
+                      dataType="i4"
+                      name="DetalleVentaID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\DST - FactVenta.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\DST - FactVenta.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\DST - FactVenta.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP - FactVenta Existente"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DetalleVentaID FROM dbo.FactVenta;</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (SELECT DetalleVentaID FROM dbo.FactVenta;) [refTable]
+where [refTable].[DetalleVentaID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="DetalleVentaID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[DetalleVentaID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Connections[OleDbConnection]"
+                  connectionManagerID="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_DW_AutoPartes]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Inputs[Lookup Input].Columns[DetalleVentaID]"
+                      cachedDataType="i4"
+                      cachedName="DetalleVentaID"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[DetalleVentaID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">DetalleVentaID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar FactVenta\RC - Nuevos"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="RC - Nuevos">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RegistrosInsertados</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar FactVenta\RC - Nuevos.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\RC - Nuevos.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\RC - Nuevos.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar FactVenta\RC - Rechazados"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="RC - Rechazados">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RegistrosRechazados</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar FactVenta\RC - Rechazados.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\RC - Rechazados.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\RC - Rechazados.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar FactVenta\RC - YaExistentes"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="RC - YaExistentes">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RegistrosSinCambio</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar FactVenta\RC - YaExistentes.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\RC - YaExistentes.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT - Cargar FactVenta\RC - YaExistentes.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - stg_FactVenta"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    s.StgFactVentaKey,
+    s.DetalleVentaID,
+    s.VentaID,
+    s.FacturaVentaID,
+
+    -- Fechas originales de staging
+    s.FechaVenta,
+    s.FechaRegistro,
+
+    -- Claves sustitutas de DimTiempo
+    dtv.TiempoKey AS FechaVentaKey,
+    dtr.TiempoKey AS FechaRegistroKey,
+
+    -- IDs de negocio
+    s.ProductoID,
+    s.ClienteID,
+    s.EmpleadoID,
+
+    -- Claves sustitutas SCD2
+    dp.ProductoKey,
+    dc.ClienteKey,
+    de.EmpleadoKey,
+
+    -- Métricas
+    s.Cantidad,
+    s.PrecioUnitario,
+    s.SubtotalDetalle AS Subtotal,
+    s.IVADetalle AS IVA,
+    s.TotalDetalle AS Total,
+
+    -- Indicadores de resolución
+    CASE
+        WHEN dtv.TiempoKey IS NULL THEN 1
+        ELSE 0
+    END AS FaltaFechaVenta,
+
+    CASE
+        WHEN dtr.TiempoKey IS NULL THEN 1
+        ELSE 0
+    END AS FaltaFechaRegistro,
+
+    CASE
+        WHEN dp.ProductoKey IS NULL THEN 1
+        ELSE 0
+    END AS FaltaProducto,
+
+    CASE
+        WHEN dc.ClienteKey IS NULL THEN 1
+        ELSE 0
+    END AS FaltaCliente,
+
+    CASE
+        WHEN de.EmpleadoKey IS NULL THEN 1
+        ELSE 0
+    END AS FaltaEmpleado,
+
+    CASE
+        WHEN dtv.TiempoKey IS NULL
+          OR dtr.TiempoKey IS NULL
+          OR dp.ProductoKey IS NULL
+          OR dc.ClienteKey IS NULL
+          OR de.EmpleadoKey IS NULL
+        THEN 1
+        ELSE 0
+    END AS RegistroRechazado
+FROM stg.FactVenta s
+-- DimTiempo: coincidencia exacta
+LEFT JOIN dbo.DimTiempo dtv
+    ON dtv.FechaHora = s.FechaVenta
+LEFT JOIN dbo.DimTiempo dtr
+    ON dtr.FechaHora = s.FechaRegistro
+-- DimProducto: SCD2 temporal respecto a FechaVenta
+LEFT JOIN dbo.DimProducto dp
+    ON dp.ProductoID = s.ProductoID
+    AND dp.VigenteDesde &lt;= s.FechaVenta
+    AND (
+        dp.VigenteHasta IS NULL
+        OR s.FechaVenta &lt; dp.VigenteHasta
+    )
+-- DimCliente: SCD2 temporal respecto a FechaVenta
+LEFT JOIN dbo.DimCliente dc
+    ON dc.ClienteID = s.ClienteID
+    AND dc.VigenteDesde &lt;= s.FechaVenta
+    AND (
+        dc.VigenteHasta IS NULL
+        OR s.FechaVenta &lt; dc.VigenteHasta
+    )
+-- DimEmpleado: SCD2 temporal respecto a FechaVenta
+LEFT JOIN dbo.DimEmpleado de
+    ON de.EmpleadoID = s.EmpleadoID
+    AND de.VigenteDesde &lt;= s.FechaVenta
+    AND (
+        de.VigenteHasta IS NULL
+        OR s.FechaVenta &lt; de.VigenteHasta
+    )
+WHERE s.EjecucionKey = ?;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"0:Input",{F768F912-6ED7-442D-93F1-6591912BF574};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Connections[OleDbConnection]"
+                  connectionManagerID="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_DW_AutoPartes]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[StgFactVentaKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[StgFactVentaKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[StgFactVentaKey]"
+                      name="StgFactVentaKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[DetalleVentaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[DetalleVentaID]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[DetalleVentaID]"
+                      name="DetalleVentaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[VentaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[VentaID]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[VentaID]"
+                      name="VentaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FacturaVentaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FacturaVentaID]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FacturaVentaID]"
+                      name="FacturaVentaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaVenta]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FechaVenta]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaVenta]"
+                      name="FechaVenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaRegistro]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FechaRegistro]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaRegistro]"
+                      name="FechaRegistro"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ProductoID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[ProductoID]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ProductoID]"
+                      name="ProductoID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ClienteID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[ClienteID]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ClienteID]"
+                      name="ClienteID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[EmpleadoID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoID]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[EmpleadoID]"
+                      name="EmpleadoID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      name="Cantidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[PrecioUnitario]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaVentaKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FechaVentaKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaVentaKey]"
+                      name="FechaVentaKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaRegistroKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FechaRegistroKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FechaRegistroKey]"
+                      name="FechaRegistroKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ProductoKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[ProductoKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ProductoKey]"
+                      name="ProductoKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ClienteKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[ClienteKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[ClienteKey]"
+                      name="ClienteKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[EmpleadoKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoKey]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[EmpleadoKey]"
+                      name="EmpleadoKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[Subtotal]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[Subtotal]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[Subtotal]"
+                      name="Subtotal"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[IVA]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[IVA]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[IVA]"
+                      name="IVA"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[Total]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[Total]"
+                      name="Total"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaFechaVenta]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaFechaVenta]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaFechaVenta]"
+                      name="FaltaFechaVenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaFechaRegistro]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaFechaRegistro]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaFechaRegistro]"
+                      name="FaltaFechaRegistro"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaProducto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaProducto]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaProducto]"
+                      name="FaltaProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaCliente]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaCliente]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaCliente]"
+                      name="FaltaCliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaEmpleado]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaEmpleado]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[FaltaEmpleado]"
+                      name="FaltaEmpleado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[RegistroRechazado]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[RegistroRechazado]"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].Columns[RegistroRechazado]"
+                      name="RegistroRechazado"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[StgFactVentaKey]"
+                      dataType="i8"
+                      name="StgFactVentaKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[DetalleVentaID]"
+                      dataType="i4"
+                      name="DetalleVentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[VentaID]"
+                      dataType="i4"
+                      name="VentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FacturaVentaID]"
+                      dataType="i4"
+                      name="FacturaVentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FechaVenta]"
+                      dataType="dbTimeStamp2"
+                      name="FechaVenta" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FechaRegistro]"
+                      dataType="dbTimeStamp2"
+                      name="FechaRegistro" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[ProductoID]"
+                      dataType="i4"
+                      name="ProductoID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[ClienteID]"
+                      dataType="i4"
+                      name="ClienteID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoID]"
+                      dataType="i4"
+                      name="EmpleadoID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[PrecioUnitario]"
+                      dataType="numeric"
+                      name="PrecioUnitario"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FechaVentaKey]"
+                      dataType="i4"
+                      name="FechaVentaKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FechaRegistroKey]"
+                      dataType="i4"
+                      name="FechaRegistroKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[ProductoKey]"
+                      dataType="i4"
+                      name="ProductoKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[ClienteKey]"
+                      dataType="i4"
+                      name="ClienteKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoKey]"
+                      dataType="i4"
+                      name="EmpleadoKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[Subtotal]"
+                      dataType="numeric"
+                      name="Subtotal"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[IVA]"
+                      dataType="numeric"
+                      name="IVA"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[Total]"
+                      dataType="numeric"
+                      name="Total"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaFechaVenta]"
+                      dataType="i4"
+                      name="FaltaFechaVenta" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaFechaRegistro]"
+                      dataType="i4"
+                      name="FaltaFechaRegistro" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaProducto]"
+                      dataType="i4"
+                      name="FaltaProducto" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaCliente]"
+                      dataType="i4"
+                      name="FaltaCliente" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[FaltaEmpleado]"
+                      dataType="i4"
+                      name="FaltaEmpleado" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output].ExternalColumns[RegistroRechazado]"
+                      dataType="i4"
+                      name="RegistroRechazado" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[StgFactVentaKey]"
+                      dataType="i8"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[StgFactVentaKey]"
+                      name="StgFactVentaKey" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[DetalleVentaID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[DetalleVentaID]"
+                      name="DetalleVentaID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[VentaID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[VentaID]"
+                      name="VentaID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FacturaVentaID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FacturaVentaID]"
+                      name="FacturaVentaID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FechaVenta]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FechaVenta]"
+                      name="FechaVenta" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FechaRegistro]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FechaRegistro]"
+                      name="FechaRegistro" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ProductoID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ProductoID]"
+                      name="ProductoID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ClienteID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ClienteID]"
+                      name="ClienteID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[EmpleadoID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[EmpleadoID]"
+                      name="EmpleadoID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[PrecioUnitario]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FechaVentaKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FechaVentaKey]"
+                      name="FechaVentaKey" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FechaRegistroKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FechaRegistroKey]"
+                      name="FechaRegistroKey" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ProductoKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ProductoKey]"
+                      name="ProductoKey" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ClienteKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[ClienteKey]"
+                      name="ClienteKey" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[EmpleadoKey]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[EmpleadoKey]"
+                      name="EmpleadoKey" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[Subtotal]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[Subtotal]"
+                      name="Subtotal"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[IVA]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[IVA]"
+                      name="IVA"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[Total]"
+                      name="Total"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaFechaVenta]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaFechaVenta]"
+                      name="FaltaFechaVenta" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaFechaRegistro]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaFechaRegistro]"
+                      name="FaltaFechaRegistro" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaProducto]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaProducto]"
+                      name="FaltaProducto" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaCliente]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaCliente]"
+                      name="FaltaCliente" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaEmpleado]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[FaltaEmpleado]"
+                      name="FaltaEmpleado" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[RegistroRechazado]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Error Output].Columns[RegistroRechazado]"
+                      name="RegistroRechazado" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Cargar FactVenta.Paths[Lookup Match Output]"
+              endId="Package\DFT - Cargar FactVenta\RC - YaExistentes.Inputs[Row Count Input 1]"
+              name="Lookup Match Output"
+              startId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT - Cargar FactVenta.Paths[Lookup No Match Output]"
+              endId="Package\DFT - Cargar FactVenta\RC - Nuevos.Inputs[Row Count Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT - Cargar FactVenta.Paths[OLE DB Source Output]"
+              endId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT - Cargar FactVenta.Paths[Rechazado]"
+              endId="Package\DFT - Cargar FactVenta\RC - Rechazados.Inputs[Row Count Input 1]"
+              name="Rechazado"
+              startId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Rechazado]" />
+            <path
+              refId="Package\DFT - Cargar FactVenta.Paths[Row Count Output 1]"
+              endId="Package\DFT - Cargar FactVenta\DST - FactVenta.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT - Cargar FactVenta\RC - Nuevos.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT - Cargar FactVenta.Paths[Valido]"
+              endId="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente.Inputs[Lookup Input]"
+              name="Valido"
+              startId="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional.Outputs[Valido]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT - Cargar stg_FactVenta"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{60C1C44D-44B3-477E-AED7-71F7B262E8E6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - Cargar stg_FactVenta"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DER - Preparar FactVenta"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Output].Columns[FechaCarga]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Output].Columns[FechaCarga]"
+                      name="FechaCarga"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::FechaCargaETL]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::FechaCargaETL]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Output].Columns[EjecucionKey]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Output].Columns[EjecucionKey]"
+                      name="EjecucionKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::EjecucionKey]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::EjecucionKey]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DST - stg_FactVenta"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[FactVenta]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Connections[OleDbConnection]"
+                  connectionManagerID="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_DW_AutoPartes]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[DetalleVentaID]"
+                      cachedDataType="i4"
+                      cachedName="DetalleVentaID"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[DetalleVentaID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[DetalleVentaID]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[VentaID]"
+                      cachedDataType="i4"
+                      cachedName="VentaID"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[VentaID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[VentaID]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[FacturaVentaID]"
+                      cachedDataType="i4"
+                      cachedName="FacturaVentaID"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FacturaVentaID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[FacturaVentaID]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[FechaVenta]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="FechaVenta"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaVenta]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[FechaVenta]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[FechaRegistro]"
+                      cachedDataType="dbTimeStamp2"
+                      cachedName="FechaRegistro"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaRegistro]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[FechaRegistro]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[ProductoID]"
+                      cachedDataType="i4"
+                      cachedName="ProductoID"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[ProductoID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[ProductoID]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[ClienteID]"
+                      cachedDataType="i4"
+                      cachedName="ClienteID"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[ClienteID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[ClienteID]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[EmpleadoID]"
+                      cachedDataType="i4"
+                      cachedName="EmpleadoID"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[EmpleadoID]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[Cantidad]"
+                      cachedDataType="i4"
+                      cachedName="Cantidad"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[PrecioUnitario]"
+                      cachedDataType="numeric"
+                      cachedName="PrecioUnitario"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[PrecioUnitario]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[SubtotalDetalle]"
+                      cachedDataType="numeric"
+                      cachedName="SubtotalDetalle"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[SubtotalDetalle]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[SubtotalDetalle]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[IVADetalle]"
+                      cachedDataType="numeric"
+                      cachedName="IVADetalle"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[IVADetalle]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[IVADetalle]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[TotalDetalle]"
+                      cachedDataType="numeric"
+                      cachedName="TotalDetalle"
+                      cachedPrecision="12"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[TotalDetalle]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[TotalDetalle]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[FechaCarga]"
+                      cachedDataType="date"
+                      cachedName="FechaCarga"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaCarga]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Output].Columns[FechaCarga]" />
+                    <inputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].Columns[EjecucionKey]"
+                      cachedDataType="i8"
+                      cachedName="EjecucionKey"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[EjecucionKey]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Output].Columns[EjecucionKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[StgFactVentaKey]"
+                      dataType="i8"
+                      name="StgFactVentaKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[DetalleVentaID]"
+                      dataType="i4"
+                      name="DetalleVentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[VentaID]"
+                      dataType="i4"
+                      name="VentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FacturaVentaID]"
+                      dataType="i4"
+                      name="FacturaVentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaVenta]"
+                      dataType="dbTimeStamp2"
+                      name="FechaVenta" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaRegistro]"
+                      dataType="dbTimeStamp2"
+                      name="FechaRegistro" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[ProductoID]"
+                      dataType="i4"
+                      name="ProductoID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[ClienteID]"
+                      dataType="i4"
+                      name="ClienteID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoID]"
+                      dataType="i4"
+                      name="EmpleadoID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[PrecioUnitario]"
+                      dataType="numeric"
+                      name="PrecioUnitario"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[SubtotalDetalle]"
+                      dataType="numeric"
+                      name="SubtotalDetalle"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[IVADetalle]"
+                      dataType="numeric"
+                      name="IVADetalle"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[TotalDetalle]"
+                      dataType="numeric"
+                      name="TotalDetalle"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[FechaCarga]"
+                      dataType="dbTimeStamp2"
+                      name="FechaCarga" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input].ExternalColumns[EjecucionKey]"
+                      dataType="i8"
+                      name="EjecucionKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar stg_FactVenta\RC - Extraidos"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="RC - Extraidos">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RegistrosExtraidos</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT - Cargar stg_FactVenta\RC - Extraidos.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar stg_FactVenta\RC - Extraidos.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT - Cargar stg_FactVenta\RC - Extraidos.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC - Venta + Detalle + Factura"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    dv.Id AS DetalleVentaID,
+    v.Id AS VentaID,
+    fv.Id AS FacturaVentaID,
+
+    DATEADD(
+        MINUTE,
+        DATEDIFF(
+            MINUTE,
+            CAST('20000101' AS DATETIME2(0)),
+            v.Fecha
+        ),
+        CAST('20000101' AS DATETIME2(0))
+    ) AS FechaVenta,
+
+    DATEADD(
+        MINUTE,
+        DATEDIFF(
+            MINUTE,
+            CAST('20000101' AS DATETIME2(0)),
+            v.FechaRegistro
+        ),
+        CAST('20000101' AS DATETIME2(0))
+    ) AS FechaRegistro,
+
+    dv.ProductoId AS ProductoID,
+    v.ClienteId AS ClienteID,
+    v.EmpleadoId AS EmpleadoID,
+
+    dv.Cantidad,
+    dv.PrecioUnitario,
+
+    CAST(
+        dv.Cantidad * dv.PrecioUnitario
+        AS DECIMAL(12,2)
+    ) AS SubtotalDetalle,
+
+    CAST(
+        CASE
+            WHEN fv.Total = 0 THEN 0
+            ELSE
+                (
+                    CAST(
+                        dv.Cantidad * dv.PrecioUnitario
+                        AS DECIMAL(18,6)
+                    )
+                    / fv.Total
+                ) * fv.IVA
+        END
+        AS DECIMAL(12,2)
+    ) AS IVADetalle,
+
+    CAST(
+        (
+            dv.Cantidad * dv.PrecioUnitario
+        )
+        +
+        CASE
+            WHEN fv.Total = 0 THEN 0
+            ELSE
+                (
+                    CAST(
+                        dv.Cantidad * dv.PrecioUnitario
+                        AS DECIMAL(18,6)
+                    )
+                    / fv.Total
+                ) * fv.IVA
+        END
+        AS DECIMAL(12,2)
+    ) AS TotalDetalle
+
+FROM dbo.DetalleVenta dv
+INNER JOIN dbo.Venta v
+    ON v.Id = dv.VentaId
+INNER JOIN dbo.FacturaVenta fv
+    ON fv.VentaId = v.Id;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Connections[OleDbConnection]"
+                  connectionManagerID="{FF7725E5-F258-4FCA-AE72-F5B3BB2E2468}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[CM_OLTP_AutoPartes]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[DetalleVentaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[DetalleVentaID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[DetalleVentaID]"
+                      name="DetalleVentaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[VentaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[VentaID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[VentaID]"
+                      name="VentaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[FacturaVentaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[FacturaVentaID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[FacturaVentaID]"
+                      name="FacturaVentaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[FechaVenta]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[FechaVenta]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[FechaVenta]"
+                      name="FechaVenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[FechaRegistro]"
+                      dataType="dbTimeStamp2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[FechaRegistro]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[FechaRegistro]"
+                      name="FechaRegistro"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[ProductoID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[ProductoID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[ProductoID]"
+                      name="ProductoID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[ClienteID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[ClienteID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[ClienteID]"
+                      name="ClienteID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[EmpleadoID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoID]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[EmpleadoID]"
+                      name="EmpleadoID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[Cantidad]"
+                      name="Cantidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[PrecioUnitario]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[PrecioUnitario]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[SubtotalDetalle]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[SubtotalDetalle]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[SubtotalDetalle]"
+                      name="SubtotalDetalle"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[IVADetalle]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[IVADetalle]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[IVADetalle]"
+                      name="IVADetalle"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[TotalDetalle]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[TotalDetalle]"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].Columns[TotalDetalle]"
+                      name="TotalDetalle"
+                      precision="12"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[DetalleVentaID]"
+                      dataType="i4"
+                      name="DetalleVentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[VentaID]"
+                      dataType="i4"
+                      name="VentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[FacturaVentaID]"
+                      dataType="i4"
+                      name="FacturaVentaID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[FechaVenta]"
+                      dataType="dbTimeStamp2"
+                      name="FechaVenta" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[FechaRegistro]"
+                      dataType="dbTimeStamp2"
+                      name="FechaRegistro" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[ProductoID]"
+                      dataType="i4"
+                      name="ProductoID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[ClienteID]"
+                      dataType="i4"
+                      name="ClienteID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoID]"
+                      dataType="i4"
+                      name="EmpleadoID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[PrecioUnitario]"
+                      dataType="numeric"
+                      name="PrecioUnitario"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[SubtotalDetalle]"
+                      dataType="numeric"
+                      name="SubtotalDetalle"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[IVADetalle]"
+                      dataType="numeric"
+                      name="IVADetalle"
+                      precision="12"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output].ExternalColumns[TotalDetalle]"
+                      dataType="numeric"
+                      name="TotalDetalle"
+                      precision="12"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[DetalleVentaID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[DetalleVentaID]"
+                      name="DetalleVentaID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[VentaID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[VentaID]"
+                      name="VentaID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[FacturaVentaID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[FacturaVentaID]"
+                      name="FacturaVentaID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[FechaVenta]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[FechaVenta]"
+                      name="FechaVenta" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[FechaRegistro]"
+                      dataType="dbTimeStamp2"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[FechaRegistro]"
+                      name="FechaRegistro" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[ProductoID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[ProductoID]"
+                      name="ProductoID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[ClienteID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[ClienteID]"
+                      name="ClienteID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[EmpleadoID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[EmpleadoID]"
+                      name="EmpleadoID" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      dataType="i4"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[PrecioUnitario]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[PrecioUnitario]"
+                      name="PrecioUnitario"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[SubtotalDetalle]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[SubtotalDetalle]"
+                      name="SubtotalDetalle"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[IVADetalle]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[IVADetalle]"
+                      name="IVADetalle"
+                      precision="12"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[TotalDetalle]"
+                      dataType="numeric"
+                      lineageId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Error Output].Columns[TotalDetalle]"
+                      name="TotalDetalle"
+                      precision="12"
+                      scale="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - Cargar stg_FactVenta.Paths[Derived Column Output]"
+              endId="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT - Cargar stg_FactVenta.Paths[OLE DB Source Output]"
+              endId="Package\DFT - Cargar stg_FactVenta\RC - Extraidos.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT - Cargar stg_FactVenta.Paths[Row Count Output 1]"
+              endId="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta.Inputs[Derived Column Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT - Cargar stg_FactVenta\RC - Extraidos.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Actualizar Control"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{2E97E2BE-84D5-42E1-A130-2E8AB5D41FF3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Actualizar Control"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+          SQLTask:SqlStatementSource="UPDATE dbo.ETL_ControlCarga&#xA;SET&#xA;    UltimaFechaCarga = SYSDATETIME(),&#xA;    UltimoIDCarga = (&#xA;        SELECT MAX(DetalleVentaID)&#xA;        FROM dbo.FactVenta&#xA;    ),&#xA;    UltimaEjecucionKey = ?,&#xA;    FechaActualizacion = SYSDATETIME()&#xA;WHERE Entidad = 'FactVenta';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::EjecucionKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Limpiar Staging"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{5447D181-6FD2-47EC-B820-E9FA4665559D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Limpiar Staging"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+          SQLTask:SqlStatementSource="DELETE FROM stg.FactVenta;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Obtener Contexto"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{251085B8-E009-4288-BB7C-A0055E236D60}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Obtener Contexto"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+          SQLTask:SqlStatementSource="SELECT&#xA;    EjecucionKey,&#xA;    FechaInicio&#xA;FROM dbo.ETL_Ejecucion&#xA;WHERE EjecucionKey = ?;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="EjecucionKey"
+            SQLTask:DtsVariableName="User::EjecucionKey" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="FechaInicio"
+            SQLTask:DtsVariableName="User::FechaCargaETL" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::pEjecucionKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Registrar Resultado"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{CE335CB4-E57D-4AD3-8C5D-F48373016929}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Registrar Resultado"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4F0E051A-1F1C-413F-84A1-1CEACCF5AABA}"
+          SQLTask:SqlStatementSource="UPDATE dbo.ETL_Ejecucion&#xA;SET&#xA;    RegistrosExtraidos = ?,&#xA;    RegistrosInsertados = ?,&#xA;    RegistrosActualizados = ?,&#xA;    RegistrosRechazados = ?,&#xA;    Mensaje = COALESCE(Mensaje, '') + ' | FactVenta procesada correctamente'&#xA;WHERE EjecucionKey = ?;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::RegistrosExtraidos"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::RegistrosInsertados"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::RegistrosActualizados"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::RegistrosRechazados"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="User::EjecucionKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="20"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{C6FEF618-E4C1-4437-997D-1AD9B978556D}"
+      DTS:From="Package\SQL - Obtener Contexto"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\DFT - Cargar stg_FactVenta" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7136710A-98EA-44E4-B841-30678DE282B1}"
+      DTS:From="Package\DFT - Cargar stg_FactVenta"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\DFT - Cargar FactVenta" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{06F29490-70B3-4C6B-A68E-7432989F1470}"
+      DTS:From="Package\DFT - Cargar FactVenta"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\SQL - Registrar Resultado" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{9B4BE473-F1C9-489D-BA97-2BC19A03E7E9}"
+      DTS:From="Package\SQL - Registrar Resultado"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\SQL - Actualizar Control" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{189EB12D-3C9A-4A08-80F6-FC1C3980222F}"
+      DTS:From="Package\SQL - Limpiar Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\SQL - Obtener Contexto" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="190,42"
+          Id="Package\DFT - Cargar FactVenta"
+          TopLeft="446,236" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\DFT - Cargar stg_FactVenta"
+          TopLeft="435,166" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\SQL - Actualizar Control"
+          TopLeft="444,398" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\SQL - Limpiar Staging"
+          TopLeft="442,10" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\SQL - Obtener Contexto"
+          TopLeft="439,82" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\SQL - Registrar Resultado"
+          TopLeft="440,315" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="537.5,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="540.5,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="540.5,278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="539.75,357">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41"
+              Start="0,0"
+              End="0,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="533.75,52">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - Cargar FactVenta">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta"
+          TopLeft="412,99" />
+        <NodeLayout
+          Size="248,42"
+          Id="Package\DFT - Cargar FactVenta\CS - Validar Resolucion Dimensional"
+          TopLeft="381,175" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar FactVenta.Paths[OLE DB Source Output]"
+          TopLeft="502.25,141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34"
+              Start="0,0"
+              End="0,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="137,42"
+          Id="Package\DFT - Cargar FactVenta\RC - Nuevos"
+          TopLeft="495,354" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\DFT - Cargar FactVenta\RC - Rechazados"
+          TopLeft="218,269" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar FactVenta.Paths[Rechazado]"
+          TopLeft="465,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-168,52"
+              Start="0,0"
+              End="-168,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="-4,21" />
+                  <mssgle:LineSegment
+                    End="-164,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-164,21"
+                    Point2="-168,21"
+                    Point3="-168,25" />
+                  <mssgle:LineSegment
+                    End="-168,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-108.27203125,26,48.5440625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="156,42"
+          Id="Package\DFT - Cargar FactVenta\DST - FactVenta"
+          TopLeft="487,432" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente"
+          TopLeft="632,270" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar FactVenta.Paths[Valido]"
+          TopLeft="545,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="187,53"
+              Start="0,0"
+              End="187,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.4038461538462" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.4038461538462"
+                    Point2="0,21.4038461538462"
+                    Point3="4,21.4038461538462" />
+                  <mssgle:LineSegment
+                    End="183,21.4038461538462" />
+                  <mssgle:CubicBezierSegment
+                    Point1="183,21.4038461538462"
+                    Point2="187,21.4038461538462"
+                    Point3="187,25.4038461538462" />
+                  <mssgle:LineSegment
+                    End="187,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="79.23978515625,26.4038461538462,28.5204296875,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Cargar FactVenta.Paths[Lookup No Match Output]"
+          TopLeft="732,312">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-168.5,42"
+              Start="0,0"
+              End="-168.5,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17"
+                    Point2="0,21"
+                    Point3="-4,21" />
+                  <mssgle:LineSegment
+                    End="-164.5,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-164.5,21"
+                    Point2="-168.5,21"
+                    Point3="-168.5,25" />
+                  <mssgle:LineSegment
+                    End="-168.5,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-140.05638671875,26,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - Cargar FactVenta.Paths[Row Count Output 1]"
+          TopLeft="564.25,396">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162,42"
+          Id="Package\DFT - Cargar FactVenta\RC - YaExistentes"
+          TopLeft="833,351" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar FactVenta.Paths[Lookup Match Output]"
+          TopLeft="764,312">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="150,39"
+              Start="0,0"
+              End="150,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.7857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.7857142857143"
+                    Point2="0,15.7857142857143"
+                    Point3="4,15.7857142857143" />
+                  <mssgle:LineSegment
+                    End="146,15.7857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="146,15.7857142857143"
+                    Point2="150,15.7857142857143"
+                    Point3="150,19.7857142857143" />
+                  <mssgle:LineSegment
+                    End="150,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="26.80861328125,20.7857142857143,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Cargar FactVenta\SRC - stg_FactVenta">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Cargar FactVenta\LKP - FactVenta Existente">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Cargar FactVenta\DST - FactVenta">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - Cargar stg_FactVenta">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="232,42"
+          Id="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura"
+          TopLeft="392,95" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\DFT - Cargar stg_FactVenta\RC - Extraidos"
+          TopLeft="434,163" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar stg_FactVenta.Paths[OLE DB Source Output]"
+          TopLeft="507.5,137">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="200,42"
+          Id="Package\DFT - Cargar stg_FactVenta\DER - Preparar FactVenta"
+          TopLeft="412,245" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar stg_FactVenta.Paths[Row Count Output 1]"
+          TopLeft="509.5,205">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40"
+              Start="0,0"
+              End="0,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="176,42"
+          Id="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta"
+          TopLeft="426,317" />
+        <EdgeLayout
+          Id="Package\DFT - Cargar stg_FactVenta.Paths[Derived Column Output]"
+          TopLeft="513,287">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Cargar stg_FactVenta\SRC - Venta + Detalle + Factura">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - Cargar stg_FactVenta\DST - stg_FactVenta">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
