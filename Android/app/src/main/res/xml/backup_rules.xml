@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Never back up JWTs encrypted with an Android Keystore key. -->
+    <exclude domain="sharedpref" path="europartes_secure_session.xml" />
+    <!-- Room contains per-device Keystore ciphertext and private customer/employee data. -->
+    <exclude domain="database" />
+</full-backup-content>
