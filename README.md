@@ -9,8 +9,7 @@ Sistema de gestión para una distribuidora de autopartes: ventas, compras, inven
 | `Backend/` | API REST, reglas de negocio, ETL y reportes del Data Warehouse | Python 3.13, Django 6.1, Django REST Framework, JWT |
 | `Frontend/` | Aplicación web de una sola página | HTML, CSS y JavaScript con módulos ES |
 | `Android/` | App móvil con funcionamiento sin conexión | Kotlin, Jetpack Compose, Room (Android 8.0+) |
-| `infra/adf/` | Pipeline de Azure Data Factory y rol personalizado para ejecutar la ETL | JSON de Azure |
-| `docs/` | Documentación técnica de la ETL y de la paridad web-móvil | Markdown |
+| `docs/` | Documentación técnica de la paridad web-móvil | Markdown |
 
 ## Arquitectura
 
@@ -94,5 +93,4 @@ cd Android
 
 ## Documentación
 
-- [ETL con Azure Data Factory](docs/etl-azure-data-factory.md)
 - [Paridad entre la web y la app móvil](docs/paridad-web-movil.md)
